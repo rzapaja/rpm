@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+            let humanScore = 0;
+            let computerScore = 0;
+
+            function getComputerChoice(){
+                let number = Math.random();
+                let choice = "";
+
+                if (number <= 0.33){
+                    return choice = "Rock";
+                } else if (number <= 0.66){
+                    return choice = "Paper";
+                } else {
+                    return choice = "Scissors";
+                };
+            }
+
+            function getHumanChoice(){
+                choice = prompt("Rock, paper, or scissors?");
+
+                if (choice.toUpperCase() === "ROCK"){
+                    return choice = "Rock";
+                } else if (choice.toUpperCase() === "PAPER"){
+                    return choice = "Paper";
+                } else if (choice.toUpperCase() === "SCISSORS"){
+                    return choice = "Scissors";
+                } else {
+                    console.log("Invalid input: input Rock, Paper, or Scissors");
+                }
+            }
+
+            function playGame(){
+  
+                const computerSelection = getComputerChoice();
+                const humanSelection = getHumanChoice();
+
+                function playRound(humanChoice, computerChoice){
+                    
+                    if (humanChoice === "Rock"){
+                        switch (computerChoice){
+                            case "Rock":
+                                console.log("Computer played Rock. You tie!");
+                                break;
+                            case "Paper":
+                                console.log("Computer played Paper. You lose!");
+                                computerScore++;
+                                break;
+                            case "Scissors":
+                                console.log("Computer played Scissors. You win!");
+                                humanScore++;
+                                break;
+                        }
+                    } else if (humanChoice === "Paper"){
+                        switch (computerChoice){
+                            case "Rock":
+                                console.log("Computer played Rock. You win!");
+                                humanScore++;
+                                break;
+                            case "Paper":
+                                console.log("Computer played Paper. You tie!");
+                                break;
+                            case "Scissors":
+                                console.log("Computer played Scissors. You lose!");
+                                computerScore++;
+                                break;
+                        } 
+                    }else if (humanChoice === "Scissors"){
+                        switch (computerChoice){
+                            case "Rock":
+                                console.log("Computer played Rock. You lose!");
+                                computerScore++;
+                                break;
+                            case "Paper":
+                                console.log("Computer played Paper. You win!");
+                                humanScore++;
+                                break;
+                            case "Scissors":
+                                console.log("Computer played Scissors. You tie!");
+                                break;
+                        }
+                    }
+
+                    console.log("Computer: " + computerScore + " | You: " + humanScore);
+                }
+
+                playRound(humanSelection,computerSelection);
+                playRound(getHumanChoice(),getComputerChoice());
+                playRound(getHumanChoice(),getComputerChoice());
+                playRound(getHumanChoice(),getComputerChoice());
+                playRound(getHumanChoice(),getComputerChoice());
+
+            }
+            
+            playGame();
+
+    </script>
+</body>
+</html>
